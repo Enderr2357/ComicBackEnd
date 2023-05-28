@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.yly.webcomic.mapper.ComicDetailMapper">
+
+
+    <select id="selectAll" resultType="org.yly.webcomic.entity.ComicDetail">
+        select * from comic_detail
+    </select>
+    <select id="selectById" resultType="org.yly.webcomic.entity.ComicDetail" >
+        select * from comic_detail where c_id=#{cId}
+    </select>
+
+    <select id="selectBybId" resultType="org.yly.webcomic.entity.ComicDetail" >
+        select * from comic_detail where b_id=#{bId}
+    </select>
+
+
+</mapper>
