@@ -35,8 +35,11 @@ public class ComicUserServiceImpl implements ComicUserService {
     @Override
     public Integer insert(ComicUser user) {
         return (Integer) MyBatisUtils.executeUpdate(sqlSession -> {
+
             ComicUserMapper mapper = sqlSession.getMapper(ComicUserMapper.class);
-            return mapper.insert(user);
+            Integer i= mapper.insert(user);
+            sqlSession.commit();
+            return i;
         });
     }
 
@@ -54,5 +57,12 @@ public class ComicUserServiceImpl implements ComicUserService {
             ComicUserMapper mapper = sqlSession.getMapper(ComicUserMapper.class);
             return mapper.update(user);
         });
+    }
+
+    @Override
+    public Long getLastuid(List<ComicUser> comicUserList) {
+
+        ComicUser comicUser=comicUserList.get(comicUserList.size()-1);
+        return  comicUser.getuId();
     }
 }

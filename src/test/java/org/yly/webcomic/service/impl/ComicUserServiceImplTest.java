@@ -28,9 +28,11 @@ class ComicUserServiceImplTest {
     void insert() {
         ComicUserServiceImpl comicUserService = new ComicUserServiceImpl();
         ComicUser user1=new ComicUser();
-        user1.setuId(2L);
-        user1.setuName("b2");
+        user1.setuName("b3");
+        user1.setuAccount("asd");
         user1.setuPassword("123456");
+        user1.setuId(6L);
+        user1.setuRole(0L);
         Integer insert = comicUserService.insert(user1);
         System.out.println(insert);
     }

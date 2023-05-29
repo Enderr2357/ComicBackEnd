@@ -14,5 +14,8 @@
         select * from comic_detail where b_id=#{bId}
     </select>
 
+    <select id="selectByNoId" resultType="org.yly.webcomic.entity.ComicDetail" >
+        select * from comic_detail where current_no=#{param1} and b_id=#{param2}
+    </select>
 
 </mapper>

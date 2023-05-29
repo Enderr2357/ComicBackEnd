@@ -9,4 +9,6 @@ public interface ComicDetailMapper {
 
     ComicDetail selectById(Long cid);
     List<ComicDetail> selectBybId(Long bid);
+
+    ComicDetail selectByNoId(Long nId,Long bId);
 }

@@ -30,4 +30,12 @@ class ComicDetailServiceImplTest {
         comicDetail.forEach(System.out::println
         );
     }
+
+    @Test
+    void selectByNoId() {
+        ComicDetailServiceImpl comicDetailService=new ComicDetailServiceImpl();
+        ComicDetail comicDetail=comicDetailService.selectByNoId(1L,1L);
+        System.out.println(comicDetail);
+    }
+
 }

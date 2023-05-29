@@ -20,11 +20,13 @@ public class ComicIdController extends HttpServlet {
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String comicid=req.getParameter("comicid");
         System.out.println("我是comicid");
+        System.out.println(comicid);
         Long id=Long.valueOf(comicid);
         System.out.println(id);
         ComicListServiceImpl comicListService =new ComicListServiceImpl();
         if (comicid!=null){
             ComicList comicList=comicListService.selectById(id);
+            System.out.println(comicList);
             ObjectMapper mapper = new ObjectMapper();
             String json=mapper.writeValueAsString(comicList);
             resp.setContentType("application/json; charset=utf-8");//设置响应编码

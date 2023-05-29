@@ -1,6 +1,7 @@
 package org.yly.webcomic.controller;
 
 import com.alibaba.fastjson.JSONArray;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.yly.webcomic.entity.ComicDetail;
 import org.yly.webcomic.service.ComicDetailService;
 import org.yly.webcomic.service.impl.ComicDetailServiceImpl;
@@ -29,6 +30,19 @@ public class ComicChapterController extends HttpServlet {
             String json = jsonArray.toJSONString(comicDetails);
             resp.setContentType("application/json; charset=utf-8");//设置响应编码
             resp.getWriter().write(json);
+        }
+        else{
+            String noid=req.getParameter("currentnoid");
+            String bid=req.getParameter("bid");
+            System.out.println("通过currentnoid查找");
+            ComicDetailServiceImpl comicDetailService=new ComicDetailServiceImpl();
+            ComicDetail comicDetail=comicDetailService.selectByNoId(Long.valueOf(noid),Long.valueOf(bid));
+            System.out.println(comicDetail);
+            ObjectMapper mapper = new ObjectMapper();
+            String json=mapper.writeValueAsString(comicDetail);
+            resp.setContentType("application/json; charset=utf-8");//设置响应编码
+            resp.getWriter().write(json);
+            System.out.println("成功返回");
         }
     }
 }

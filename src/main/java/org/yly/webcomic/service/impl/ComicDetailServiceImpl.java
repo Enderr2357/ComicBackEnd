@@ -33,5 +33,13 @@ public class ComicDetailServiceImpl implements ComicDetailService {
         });
     }
 
+    @Override
+    public ComicDetail selectByNoId(Long nId, Long bId) {
+        return (ComicDetail) MyBatisUtils.executeQuery(sqlSession -> {
+            ComicDetailMapper mapper = sqlSession.getMapper(ComicDetailMapper.class);
+            return mapper.selectByNoId(nId, bId);
+        });
+    }
+
 
 }

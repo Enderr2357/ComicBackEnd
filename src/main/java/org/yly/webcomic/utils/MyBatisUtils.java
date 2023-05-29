@@ -26,7 +26,7 @@ public class MyBatisUtils {
 
 
     public static Object executeQuery(Function<SqlSession, Object> func) {
-        SqlSession sqlSession = sqlSessionFactory.openSession();
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
         return func.apply(sqlSession);
     }
 

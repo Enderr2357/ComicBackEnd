@@ -15,8 +15,22 @@ public class ComicUser {
     private String uName;
     private String uPassword;
     private String uAccount;
+    private Long uRole;
     public void setuId(Long uId) {
         this.uId = uId;
+    }
+
+    public Long getuId() {
+        return uId;
+    }
+
+    public Long getuRole() {
+        return uRole;
+    }
+
+    public void setuRole(Long uRole) {
+
+        this.uRole = uRole;
     }
 
     public void setuAccount(String uAccount) {
@@ -25,6 +39,18 @@ public class ComicUser {
 
     public void setuName(String uName) {
         this.uName = uName;
+    }
+
+    public String getuName() {
+        return uName;
+    }
+
+    public String getuPassword() {
+        return uPassword;
+    }
+
+    public String getuAccount() {
+        return uAccount;
     }
 
     public void setuPassword(String uPassword) {

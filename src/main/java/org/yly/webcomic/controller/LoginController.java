@@ -18,15 +18,20 @@ public class LoginController extends HttpServlet {
         System.out.println("1");
 
         String account=req.getParameter("useraccount");
-        System.out.println(account);
+        String password=req.getParameter("password");
+
+        System.out.println(account+""+password);
         ComicUserServiceImpl comicUserService=new ComicUserServiceImpl();
         ComicUser comicUser=comicUserService.selectByAccount(account);
-        System.out.println(comicUser);
         if (comicUser!=null) {
+            System.out.println("查找到用户");
+            String Dpassword=comicUser.getuPassword();
+            if(password.equals(Dpassword)){
+                System.out.println("登陆成功");
+            }
             resp.setContentType("text/html;charset=utf-8");
             PrintWriter writer = resp.getWriter();
             writer.println("登录成功！");
-            System.out.println("登陆成功");
         }
         if (comicUser==null){
             System.out.println("账号错误");

@@ -9,4 +9,6 @@ public interface ComicDetailService {
 
    ComicDetail selectById(Long cId);
    List<ComicDetail> selectBybId(Long bId);
+
+   ComicDetail selectByNoId(Long nId,Long bId);
 }

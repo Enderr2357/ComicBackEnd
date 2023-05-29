@@ -19,7 +19,7 @@
         select * from comic_user where u_Account=#{uAccount}
     </select>
     <insert id="insert" parameterType="org.yly.webcomic.entity.ComicUser">
-        insert into comic_user values (#{uId},#{uName},#{uPassword})
+        insert into comic_user values (#{uId},#{uName},#{uAccount},#{uPassword},#{uRole})
     </insert>
 
     <delete id="delete" parameterType="org.yly.webcomic.entity.ComicUser">
