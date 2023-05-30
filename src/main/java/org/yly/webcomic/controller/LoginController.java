@@ -1,5 +1,6 @@
 package org.yly.webcomic.controller;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.yly.webcomic.entity.ComicUser;
 import org.yly.webcomic.service.impl.ComicUserServiceImpl;
 
@@ -26,15 +27,22 @@ public class LoginController extends HttpServlet {
         if (comicUser!=null) {
             System.out.println("查找到用户");
             String Dpassword=comicUser.getuPassword();
+            System.out.println(Dpassword);
             if(password.equals(Dpassword)){
                 System.out.println("登陆成功");
+                ObjectMapper mapper = new ObjectMapper();
+                String json=mapper.writeValueAsString(comicUser);
+                resp.setContentType("application/json; charset=utf-8");//设置响应编码
+                resp.getWriter().write(json);
+                System.out.println(1);
             }
-            resp.setContentType("text/html;charset=utf-8");
-            PrintWriter writer = resp.getWriter();
-            writer.println("登录成功！");
+
         }
         if (comicUser==null){
             System.out.println("账号错误");
+            resp.setContentType("text/html;charset=utf-8");
+            PrintWriter writer = resp.getWriter();
+            writer.println(0);
         }
     }
 
