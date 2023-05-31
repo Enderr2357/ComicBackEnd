@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.yly.webcomic.mapper.ComicReadMapper">
+
+
+    <select id="selectAll" resultType="org.yly.webcomic.entity.ComicRead">
+        select * from comic_read
+    </select>
+
+    <select id="selectByuId" resultType="org.yly.webcomic.entity.ComicRead">
+        select * from comic_read where u_id=#{uId}
+    </select>
+
+    <select id="selectByuIdbId" resultType="org.yly.webcomic.entity.ComicRead">
+        select * from comic_read where u_id=#{param1} and b_id=#{param2}
+    </select>
+
+    <delete id="deleteByrId" parameterType="org.yly.webcomic.entity.ComicRead">
+        delete from comic_read where r_id=#{rId}
+    </delete>
+
+    <insert id="insert" parameterType="org.yly.webcomic.entity.ComicRead">
+        insert into comic_read values (#{rId},#{uId},#{bId})
+    </insert>
+
+</mapper>

@@ -60,9 +60,11 @@ public class ComicUserServiceImpl implements ComicUserService {
     }
 
     @Override
-    public Long getLastuid(List<ComicUser> comicUserList) {
-
-        ComicUser comicUser=comicUserList.get(comicUserList.size()-1);
-        return  comicUser.getuId();
+    public Long getMaxId() {
+        return (Long) MyBatisUtils.executeQuery(sqlSession -> {
+           ComicUserMapper mapper=sqlSession.getMapper(ComicUserMapper.class);
+           return mapper.getMaxId();
+        });
     }
+
 }

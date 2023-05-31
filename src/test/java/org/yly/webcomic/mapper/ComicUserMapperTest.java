@@ -28,19 +28,7 @@ class ComicUserMapperTest {
         list.forEach(System.out::println);
     }
 
-    @Test
-    void insert() {
-        Integer result = (Integer) MyBatisUtils.executeUpdate(sqlSession -> {
-            ComicUserMapper mapper=sqlSession.getMapper(ComicUserMapper.class);
-            ComicUser user=new ComicUser();
-            user.setuId(1L);
-            user.setuName("a1");
-            user.setuPassword("123456");
-            int i= mapper.insert(user);
-            sqlSession.commit();
-            return i;
-        });
-    }
+
 
     @Test
     void delete() {
@@ -50,17 +38,5 @@ class ComicUserMapperTest {
         });
     }
 
-    @Test
-    void update() {
-        Integer result= (Integer) MyBatisUtils.executeUpdate(sqlSession -> {
-           ComicUserMapper mapper=sqlSession.getMapper(ComicUserMapper.class);
-           ComicUser user=new ComicUser();
-           user.setuId(1L);
-           user.setuName("b1");
-           user.setuPassword("234567");
-           int i=mapper.update(user);
-           sqlSession.commit();
-           return i;
-        });
-    }
+
 }

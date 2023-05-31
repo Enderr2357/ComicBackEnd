@@ -9,11 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-public class ComicUser {
+public class ComicRead {
+    private Long rId;
     private Long uId;
-    private String uName;
-    private String uPassword;
-    private String uAccount;
-    private Long uRole;
+    private Long bId;
 }

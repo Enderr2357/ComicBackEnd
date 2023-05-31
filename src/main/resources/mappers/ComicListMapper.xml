@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.yly.webcomic.mapper.ComicListMapper">
-
-
+    <insert id="Insert" parameterType="org.yly.webcomic.entity.ComicList">
+        insert into comic_list values (#{bId},#{bName},#{bMaxno},#{bCategory},#{bAuthor},#{bInfo},#{bSrcname})
+    </insert>
+    <delete id="delete" parameterType="org.yly.webcomic.entity.ComicList">
+        delete from comic_list where b_id=#{bId}
+    </delete>
     <select id="selectAll" resultType="org.yly.webcomic.entity.ComicList">
         select * from comic_list
     </select>
@@ -13,6 +17,9 @@
 
     <select id="selectByCategory" resultType="org.yly.webcomic.entity.ComicList">
         select * from comic_list where b_category=#{cId}
+    </select>
+    <select id="getMaxId" resultType="java.lang.Long">
+        select MAX(b_id) from comic_list
     </select>
 
 </mapper>

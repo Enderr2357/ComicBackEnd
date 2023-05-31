@@ -9,7 +9,9 @@
     <select id="selectById" resultType="org.yly.webcomic.entity.ComicCategory" >
         select * from comic_category where cate_id=#{cId}
     </select>
-
+    <select id="selectByName" resultType="org.yly.webcomic.entity.ComicCategory">
+        select * from comic_category where cate_name=#{Name}
+    </select>
 
 
 </mapper>

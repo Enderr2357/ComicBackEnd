@@ -13,6 +13,5 @@ public interface ComicUserService {
     Integer insert(ComicUser user);
     Integer delete(Long uId);
     Integer update(ComicUser user);
-
-    Long getLastuid(List<ComicUser> comicUserList);
+    Long getMaxId();
 }

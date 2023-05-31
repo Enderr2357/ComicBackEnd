@@ -19,6 +19,14 @@ public class ComicCategoryServiceImpl implements ComicCategoryService {
     }
 
     @Override
+    public ComicCategory selectByName(String Name) {
+        return (ComicCategory) MyBatisUtils.executeUpdate(sqlSession -> {
+            ComicCategoryMapper mapper=sqlSession.getMapper(ComicCategoryMapper.class);
+            return mapper.selectByName(Name);
+        });
+    }
+
+    @Override
     public ComicCategory selectById(Long cId) {
         return (ComicCategory) MyBatisUtils.executeQuery(sqlSession -> {
             ComicCategoryMapper mapper = sqlSession.getMapper(ComicCategoryMapper.class);

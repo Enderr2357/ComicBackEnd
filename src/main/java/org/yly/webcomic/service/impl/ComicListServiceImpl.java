@@ -18,6 +18,14 @@ public class ComicListServiceImpl implements ComicListService {
     }
 
     @Override
+    public Integer Insert(ComicList comicList) {
+        return (Integer) MyBatisUtils.executeUpdate(sqlSession -> {
+            ComicListMapper mapper=sqlSession.getMapper(ComicListMapper.class);
+            return mapper.Insert(comicList);
+        });
+    }
+
+    @Override
     public ComicList selectById(Long bId) {
         return (ComicList) MyBatisUtils.executeQuery(sqlSession -> {
             ComicListMapper mapper = sqlSession.getMapper(ComicListMapper.class);
@@ -30,6 +38,22 @@ public class ComicListServiceImpl implements ComicListService {
         return (List<ComicList>) MyBatisUtils.executeQuery(sqlSession -> {
             ComicListMapper mapper = sqlSession.getMapper(ComicListMapper.class);
             return mapper.selectByCategory(cId);
+        });
+    }
+
+    @Override
+    public Long getMaxId() {
+        return (Long) MyBatisUtils.executeQuery(sqlSession -> {
+           ComicListMapper mapper=sqlSession.getMapper(ComicListMapper.class);
+           return mapper.getMaxId();
+        });
+    }
+
+    @Override
+    public Integer delete(Long bId) {
+        return (Integer) MyBatisUtils.executeUpdate(sqlSession -> {
+            ComicListMapper mapper=sqlSession.getMapper(ComicListMapper.class);
+            return mapper.delete(bId);
         });
     }
 }

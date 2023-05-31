@@ -27,24 +27,24 @@ public class RegisterController extends HttpServlet {
         if(result!=null){
             resp.setContentType("text/html;charset=utf-8");
             PrintWriter writer = resp.getWriter();
-            writer.println("用户名已存在！");
+            writer.println(0);
         }
         else{
         ComicUser comicUser=new ComicUser();
         List<ComicUser> comicUserList=comicUserService.selectAll();
-        Long id=comicUserService.getLastuid(comicUserList);
-        comicUser.setuId(id+1L);
-        comicUser.setuRole(0L);
-        comicUser.setuName(username);
-        comicUser.setuAccount(account);
-        comicUser.setuPassword(password);
+        Long id=comicUserService.getMaxId();
+        comicUser.setUId(id+1L);
+        comicUser.setURole(0L);
+        comicUser.setUName(username);
+        comicUser.setUAccount(account);
+        comicUser.setUPassword(password);
         Integer i=comicUserService.insert(comicUser);
 
         if(i!=null){
             System.out.println("添加成功");
             resp.setContentType("text/html;charset=utf-8");
             PrintWriter writer = resp.getWriter();
-            writer.println("注册成功！");
+            writer.println(1);
         }
 
     }

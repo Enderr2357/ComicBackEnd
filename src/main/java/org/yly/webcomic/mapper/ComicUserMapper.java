@@ -12,4 +12,6 @@ public interface ComicUserMapper {
     ComicUser selectByAccount(String uAccount);
     Integer delete(Long uId);
     Integer update(ComicUser user);
+
+    Long getMaxId();
 }

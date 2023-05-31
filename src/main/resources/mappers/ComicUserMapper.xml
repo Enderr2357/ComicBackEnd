@@ -18,6 +18,9 @@
     <select id="selectByAccount" resultType="org.yly.webcomic.entity.ComicUser">
         select * from comic_user where u_Account=#{uAccount}
     </select>
+    <select id="getMaxId" resultType="java.lang.Long">
+        select MAX(u_id) from comic_user
+    </select>
     <insert id="insert" parameterType="org.yly.webcomic.entity.ComicUser">
         insert into comic_user values (#{uId},#{uName},#{uAccount},#{uPassword},#{uRole})
     </insert>
@@ -29,7 +32,6 @@
     <update id="update" parameterType="org.yly.webcomic.entity.ComicUser">
         update comic_user set u_name=#{uName},u_password=#{uPassword} where u_id=#{uId}
     </update>
-
 
 
 </mapper>

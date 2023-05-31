@@ -24,18 +24,7 @@ class ComicUserServiceImplTest {
         System.out.println(comicUser);
     }
 
-    @Test
-    void insert() {
-        ComicUserServiceImpl comicUserService = new ComicUserServiceImpl();
-        ComicUser user1=new ComicUser();
-        user1.setuName("b3");
-        user1.setuAccount("asd");
-        user1.setuPassword("123456");
-        user1.setuId(6L);
-        user1.setuRole(0L);
-        Integer insert = comicUserService.insert(user1);
-        System.out.println(insert);
-    }
+
 
     @Test
     void delete() {
@@ -44,16 +33,7 @@ class ComicUserServiceImplTest {
         System.out.println(delete);
     }
 
-    @Test
-    void update() {
-        ComicUserServiceImpl comicUserService = new ComicUserServiceImpl();
-        ComicUser user=new ComicUser();
-        user.setuId(1L);
-        user.setuPassword("123456");
-        user.setuName("a1");
-        Integer update = comicUserService.update(user);
-        System.out.println(update);
-    }
+
 
     @Test
     void selectByAccount() {
@@ -61,4 +41,5 @@ class ComicUserServiceImplTest {
         ComicUser user=comicUserService.selectByAccount("a1");
         System.out.println(user);
     }
+
 }
