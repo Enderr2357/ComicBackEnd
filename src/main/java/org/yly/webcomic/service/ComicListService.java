@@ -11,4 +11,5 @@ public interface ComicListService {
     List<ComicList> selectByCategory(Long cId);
     Long getMaxId();
     Integer delete(Long bId);
+    List<ComicList> selectByName(String bName);
 }

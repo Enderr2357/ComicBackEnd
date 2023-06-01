@@ -14,7 +14,9 @@
     <select id="selectById" resultType="org.yly.webcomic.entity.ComicList">
         select * from comic_list where b_id=#{bId}
     </select>
-
+    <select id="selectByName" resultType="org.yly.webcomic.entity.ComicList">
+        select * from comic_list where b_name like #{bName}
+    </select>
     <select id="selectByCategory" resultType="org.yly.webcomic.entity.ComicList">
         select * from comic_list where b_category=#{cId}
     </select>

@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.List;
 
 @WebServlet(urlPatterns = "/AddUser")
@@ -31,7 +32,7 @@ public class UserController extends HttpServlet {
         System.out.println(comicUserVO);
         ComicUser comicUser = new ComicUser();
         List<ComicUser> comicUserList = comicUserService.selectAll();
-        comicUser.setUName(comicUserVO.getUsername());
+        comicUser.setUName(URLDecoder.decode(comicUserVO.getUsername(),"UTF-8"));
         comicUser.setUAccount(comicUserVO.getAccount());
         comicUser.setUPassword(comicUserVO.getPassword());
         comicUser.setUId(comicUserService.getMaxId()+1L);

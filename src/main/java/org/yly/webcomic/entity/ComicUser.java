@@ -15,5 +15,6 @@ public class ComicUser {
     private String uName;
     private String uPassword;
     private String uAccount;
+
     private Long uRole;
 }

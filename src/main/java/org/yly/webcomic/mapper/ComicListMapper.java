@@ -13,4 +13,6 @@ public interface ComicListMapper {
     Long getMaxId();
     Integer delete(Long bId);
     Integer Insert(ComicList comicList);
+
+    List<ComicList> selectByName(String bName);
 }

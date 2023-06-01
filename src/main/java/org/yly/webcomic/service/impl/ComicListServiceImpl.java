@@ -56,4 +56,15 @@ public class ComicListServiceImpl implements ComicListService {
             return mapper.delete(bId);
         });
     }
+
+    @Override
+    public List<ComicList> selectByName(String bName) {
+        return (List<ComicList>) MyBatisUtils.executeQuery(sqlSession ->{
+           ComicListMapper mapper=sqlSession.getMapper(ComicListMapper.class);
+            StringBuffer name=new StringBuffer(bName);
+            name.append("%");
+            name.insert(0,"%");
+           return  mapper.selectByName(name.toString());
+        });
+    }
 }

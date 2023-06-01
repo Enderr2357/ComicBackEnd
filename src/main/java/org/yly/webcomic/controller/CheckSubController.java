@@ -36,15 +36,25 @@ public class CheckSubController extends HttpServlet {
         if(sub!=null){
             System.out.println("是订阅按钮");
             List<ComicRead> comicReadList=comicReadService.selectAll();
-            Long id=Long.valueOf(comicReadList.size());
-            ComicRead newcomicRead=new ComicRead(id+1L,Long.valueOf(userid),Long.valueOf(comicid));
-            Integer i= comicReadService.insert(newcomicRead);
-            System.out.println(i);
-            if(i==1){
+            Long id=Long.valueOf(comicReadList.size()+1);
+            ComicRead check= comicReadService.selectByuIdbId(Long.valueOf(userid),Long.valueOf(comicid));
+            if(check!=null){
+                System.out.println("已有信息，订阅失败");
                 resp.setContentType("text/html;charset=utf-8");
                 PrintWriter writer = resp.getWriter();
-                writer.println(1);
+                writer.println(0);
             }
+            else{
+                ComicRead newcomicRead=new ComicRead(id,Long.valueOf(userid),Long.valueOf(comicid));
+                Integer i= comicReadService.insert(newcomicRead);
+                System.out.println(i);
+                if(i==1){
+                    resp.setContentType("text/html;charset=utf-8");
+                    PrintWriter writer = resp.getWriter();
+                    writer.println(1);
+                }
+            }
+
         }
     }
 }

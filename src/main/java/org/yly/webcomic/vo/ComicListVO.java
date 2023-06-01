@@ -5,12 +5,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ComicListVO {
-    @java.io.Serial
+public class ComicListVO implements Serializable {
     private static final long serialVersionUID = 1L;
     private Long id;
     private String name;

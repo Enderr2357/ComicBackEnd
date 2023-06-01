@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
         ComicUser comicUser=comicUserService.selectByAccount(account);
         if (comicUser!=null) {
             System.out.println("查找到用户");
-            String Dpassword=comicUser.getUPassword();
+           String Dpassword=comicUser.getUPassword();
             System.out.println(Dpassword);
             if(password.equals(Dpassword)){
                 System.out.println("登陆成功");
